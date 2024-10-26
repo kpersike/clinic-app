@@ -1,0 +1,36 @@
+<main class="flex flex-col gap-4 p-4 place-items-center place-content-center w-full">
+    <form class="grid gap-2 w-1/2">
+        <label for="nome">Nome </label>
+        <input type="text" [(ngModel)]="name_customer" [ngModelOptions]="{standalone: true}" id="name_customer" name="name_customer" placeholder="Enter Name">
+
+        <label for="cpf">CPF </label>
+        <input type="number" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="cpf_cliente" name="cpf_cliente" placeholder="Enter CPF">
+
+        <label for="data">Data de nascimento </label>
+        <input type="date" [(ngModel)]="date_customer" [ngModelOptions]="{standalone: true}" id="data_customer" name="data_customer" placeholder="Enter Data">
+
+        <label for="email">Email </label>
+        <input type="text" [(ngModel)]="email_customer" [ngModelOptions]="{standalone: true}" id="email_customer" name="email_customer" placeholder="Enter Email">
+
+        <button type="submit" (click)="registerCustomer()">CADASTRAR CLIENTE</button>
+    </form>
+
+    <table class="table-auto">
+        <caption>Lista de clientes</caption>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let customer of Customers">
+                <td>{{customer.nm_customer}}</td>
+                <td>{{customer.dt_customer}}</td>
+                <td>{{customer.ds_email_customer}}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

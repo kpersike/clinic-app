@@ -1,0 +1,94 @@
+<!--
+<div class="container mt-4" >
+    <h1>Customer Registation</h1>
+    <div class="card">
+           
+<form>
+   
+    <div class="form-group">
+      <label >Customer Name</label>
+      <input type="text" [(ngModel)]="name_customer" [ngModelOptions]="{standalone: true}" id="customer_name" name="customer_name" placeholder="Enter Name">
+    </div>
+    
+    <div class="form-group">
+        <label>CPF</label>
+        <input type="number" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="customer_cpf" name="customer_cpf" placeholder="Enter CPF">
+      </div>
+
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" [(ngModel)]="date_customer" [ngModelOptions]="{standalone: true}" id="customer_data" name="customer_data" placeholder="Enter Data">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" [(ngModel)]="email_customer" [ngModelOptions]="{standalone: true}" id="customer_email" name="customer_email" placeholder="Enter Email">
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="saveRecords()">Save</button> &nbsp;
+      <button type="submit" class="btn btn-warning mt-4" (click)="UpdateRecords()">Update</button>
+  </form>
+</div>
+</div>
+
+
+<div>
+    <div class="container mt-4">
+        <h1>Customer Table</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Customer of Customers">
+
+                    <td>{{Customer.nm_customer}}</td>
+                    <td>{{Customer.nr_cpf_customer}}</td>
+                    <td>{{Customer.dt_customer}}</td>
+                    <td>{{Customer.ds_email_customer}}</td>
+
+                    <td>
+                        <button type="button" class="btn btn-success" (click)="setUpdate(Customer)">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="setDelete(Customer)">Delete</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+-->
+
+<main>
+    <form>
+        <label for="CPF">CPF: </label>
+        <input type="text" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="query_cpf_customer" name="query_cpf_customer" placeholder="Somente numeros">
+        <button (click)="searchCustomer()">Fazer consulta</button>
+    </form>
+
+    <table class="table-auto">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let customer of Customers">
+                <td>{{customer.id_customer}}</td>
+                <td>{{customer.dt_visit_customer}}</td>
+                <!-- <td>{{Customer.ds_email_customer}}</td> -->
+            </tr>
+        </tbody>
+    </table>
+</main>
