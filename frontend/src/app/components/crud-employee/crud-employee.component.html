@@ -1,5 +1,6 @@
-<main class="flex flex-col gap-4 p-4 place-items-center place-content-center w-full">
-    <form class="grid gap-2 w-1/2">
+<main class="w-full h-auto">
+    
+    <!-- <form class="grid gap-2 w-1/2">
         <label for="nome">Nome </label>
         <input type="text" [(ngModel)]="name_customer" [ngModelOptions]="{standalone: true}" id="name_customer" name="name_customer" placeholder="Enter Name">
 
@@ -19,18 +20,78 @@
         <caption>Lista de clientes</caption>
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Data</th>
-                <th>Email</th>
+                <th class="py-4">Nome</th>
+                <th class="py-4">CPF</th>
+                <th class="py-4">Email</th>
             </tr>
         </thead>
 
         <tbody>
             <tr *ngFor="let customer of Customers">
-                <td>{{customer.nm_customer}}</td>
-                <td>{{customer.dt_customer}}</td>
-                <td>{{customer.ds_email_customer}}</td>
+                <td class="py-4 px-8">{{customer.cd_customer}}</td>
+                <td class="py-4 px-8">{{customer.nm_customer}}</td>
+                <td class="py-4 px-8">{{customer.nr_cpf_customer}}</td>
+                <td class="py-4 px-8">{{customer.ds_email_customer}}</td>
+
+                <td>
+                    <button type="button" class="p-2 rounded-full bg-green-400 text-white" (click)="regVisit(customer)">PRESENTE</button>
+                </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
+    <section class="w-full h-screen">
+        <div class="grid grid-cols-3 gap-4 p-4 h-full">
+            <div class="bg-slate-200 col-span-2 p-4" style="overflow-y: auto; max-height: 100%;">
+                <table class="table-auto w-full">
+                    <caption class="my-4 text-2xl">LISTA DE CLIENTES</caption>
+                    <thead class="">
+                        <tr class="text-lg grid grid-cols-4 place-content-center">
+                            <!-- <th class="py-4">Código</th> -->
+                            <th class="flex place-items-start p-4">Nome</th>
+                            <th class="flex place-items-start p-4">CPF</th>
+                            <th class="flex place-items-start p-4">Email</th>
+
+                            <th class="flex place-items-start p-4">
+                                <input class="max-w-full py-1 px-4 rounded-full border-solid border-2 border-slate-200" type="text" id="pesquisar" name="pesquisar" placeholder="Pesquise">
+                            </th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        <tr class="uppercase grid grid-cols-4 odd:bg-slate-100 even:bg-slate-50" *ngFor="let customer of Customers">
+                            <!-- <td class="py-4 px-8">{{customer.cd_customer}}</td> -->
+                            <td class="flex place-items-center p-4">{{customer.nm_customer}}</td>
+                            <td class="flex place-items-center p-4">{{customer.nr_cpf_customer}}</td>
+                            <td class="flex place-items-center p-4">{{customer.ds_email_customer}}</td>
+            
+                            <td class="flex place-content-center place-items-center p-4">
+                                <button type="button" class="p-2 rounded-full bg-green-400 text-white" (click)="regVisit(customer)">PRESENTE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-rows-3 grid-flow-col gap-4">
+                <div class="flex p-4 row-span-2 bg-slate-200">
+                    <form class="grid gap-1 w-full">
+                        <label for="nome">Nome </label>
+                        <input class="py-1 px-4 rounded-full border-solid border-2 border-slate-200" type="text" [(ngModel)]="name_customer" [ngModelOptions]="{standalone: true}" id="name_customer" name="name_customer" placeholder="Enter Name">
+                
+                        <label for="cpf">CPF </label>
+                        <input class="py-1 px-4 rounded-full border-solid border-2 border-slate-200" type="number" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="cpf_cliente" name="cpf_cliente" placeholder="Enter CPF">
+                
+                        <label for="data">Data de nascimento </label>
+                        <input class="py-1 px-4 rounded-full border-solid border-2 border-slate-200" type="date" [(ngModel)]="date_customer" [ngModelOptions]="{standalone: true}" id="data_customer" name="data_customer" placeholder="Enter Data">
+                
+                        <label for="email">Email </label>
+                        <input class="py-1 px-4 rounded-full border-solid border-2 border-slate-200" type="text" [(ngModel)]="email_customer" [ngModelOptions]="{standalone: true}" id="email_customer" name="email_customer" placeholder="Enter Email">
+                
+                        <button class="my-4 p-2 rounded-full bg-green-400 text-white" type="submit" (click)="registerCustomer()">CADASTRAR CLIENTE</button>
+                    </form>
+                </div>
+                <div class="bg-slate-200">02</div>
+            </div>
+        </div>
+    </section>
 </main>

@@ -15,11 +15,15 @@ class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
-class VisitList(generics.ListCreateAPIView):
+class VisitDetail(generics.ListCreateAPIView):
     serializer_class = VisitSerializer
     def get_queryset(self):
         customer_id = self.kwargs['pk']
         return Visit.objects.filter(id_customer=customer_id) # alerta
+
+class VisitList(generics.ListCreateAPIView):
+    queryset = Visit.objects.all()
+    serializer_class = VisitSerializer
 
 def helloWorld(HttpRequest):
     return HttpResponse("Hello world")

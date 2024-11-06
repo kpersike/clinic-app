@@ -49,4 +49,19 @@ export class CrudEmployeeComponent {
     });
   }
 
+  regVisit(data: any){
+    let currentDate = new Date(); // providing standardized format
+
+    let bodyData = {
+      "dt_visit_customer": `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`,
+      "id_customer" : data.cd_customer
+    };
+
+    this.http.post("http://127.0.0.1:8000/api/visits/",bodyData).subscribe((resultData: any)=>
+      {
+          console.log(resultData);
+          // this.getAllCustomer();
+      });
+  }
+
 }
