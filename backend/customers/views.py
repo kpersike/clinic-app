@@ -1,4 +1,5 @@
 from django.http import HttpRequest, HttpResponse
+from django.db.models import Q
 from .models import Customer, Visit
 from .serializers import CustomerSerializer, VisitSerializer
 from rest_framework import generics
@@ -24,6 +25,13 @@ class VisitDetail(generics.ListCreateAPIView):
 class VisitList(generics.ListCreateAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
+
+class SearchCustomer(generics.ListCreateAPIView):
+    serializer_class = CustomerSerializer
+
+    def get_queryset(self):
+        customer_name = self.kwargs['nm_customer']
+        return Customer.objects.filter(Q(nm_customer__icontains=customer_name))
 
 def helloWorld(HttpRequest):
     return HttpResponse("Hello world")
