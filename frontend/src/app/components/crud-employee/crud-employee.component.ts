@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'; 
 import { Subject } from 'rxjs'; 
 
 @Component({
   selector: 'app-crud-employee',
   templateUrl: './crud-employee.component.html',
-  styleUrl: './crud-employee.component.css'
+  styleUrls: ['./crud-employee.component.css']
 })
 export class CrudEmployeeComponent {
 
@@ -24,7 +23,7 @@ export class CrudEmployeeComponent {
   src_name_customer: string = '';
   name_customer: string ='';
   cpf_customer: string ='';
-  date_customer: Date= new Date('0000-00-00');
+  date_customer: Date = new Date('0000-00-00');
   email_customer: string ='';
 
   registerCustomer()
