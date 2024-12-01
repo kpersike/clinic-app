@@ -19,13 +19,24 @@ export class CrudEmployeeComponent {
   private searchTerms = new Subject<string>();
 
   Customers : any[] = [];
+  selectedCustomer: any = null;
 
-  id_customer = ''
+  id_customer = '';
   src_name_customer: string = '';
   name_customer: string ='';
   cpf_customer: string ='';
   date_customer: Date= new Date('0000-00-00');
   email_customer: string ='';
+
+  cleanCamp()
+  {
+    this.id_customer = '';
+    this.src_name_customer = '';
+    this.name_customer ='';
+    this.cpf_customer ='';
+    this.date_customer = new Date('0000-00-00');
+    this.email_customer ='';
+  }
 
   registerCustomer()
   {
@@ -42,6 +53,7 @@ export class CrudEmployeeComponent {
         console.log(resultData);
         alert("Customer Registered Successfully");
         this.getAllCustomer();
+        this.cleanCamp();
     });
   }
 
@@ -52,6 +64,7 @@ export class CrudEmployeeComponent {
     {
         console.log(resultData);
         this.Customers = resultData;
+        this.selectedCustomer = this.Customers[0];
     });
   }
 
@@ -69,16 +82,6 @@ export class CrudEmployeeComponent {
           // this.getAllCustomer();
       });
   }
-//   srcName() {
-//     if(this.src_name_customer != ""){
-//       this.http.get<any[]>("http://127.0.0.1:8000/api/search/"+this.src_name_customer).subscribe(data => {
-//         this.Customers = data;
-//       });
-//     }else{
-//       this.getAllCustomer();
-//     }
-
-// }
 
   onSearch(event: any): void { 
     this.searchTerms.next(event.target.value); 
@@ -91,8 +94,9 @@ export class CrudEmployeeComponent {
       distinctUntilChanged(),
 
       switchMap((term: string) => this.searchCustomers(term)),
-    ).subscribe(data => { this.Customers = data; 
-
+    ).subscribe(data => { 
+      this.Customers = data; 
+      this.selectedCustomer = this.Customers[0];
     });
   }
 
@@ -102,6 +106,10 @@ export class CrudEmployeeComponent {
     } else { 
       return this.http.get<any[]>("http://127.0.0.1:8000/api/search/" + term); 
     } 
+  }
+
+  selectCustomer(customer: any){
+    this.selectedCustomer = customer;
   }
 
 }

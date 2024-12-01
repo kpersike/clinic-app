@@ -67,28 +67,36 @@
 </div>
 -->
 
-<main>
-    <form>
-        <label for="codigo_cliente">Código do cliente: </label>
-        <input type="text" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="query_cpf_customer" name="query_cpf_customer" placeholder="Somente numeros">
-        <button (click)="searchCustomer()">Fazer consulta</button>
-    </form>
+<main class="h-screen">
 
-    <table class="table-auto">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Data</th>
-                <th>Email</th>
-            </tr>
-        </thead>
+    <section class="grid gap-8 place-items-center place-content-center h-full">
 
-        <tbody>
-            <tr *ngFor="let customer of Customers">
-                <td>{{customer.id_customer}}</td>
-                <td>{{customer.dt_visit_customer}}</td>
-                <!-- <td>{{Customer.ds_email_customer}}</td> -->
-            </tr>
-        </tbody>
-    </table>
+        <form class="place-items-center place-content-center rounded-full bg-primary-200">
+            <label class="p-4 font-bold text-lg text-primary-300" for="codigo_cliente">CÓDIGO: </label>
+            <input class="py-1 px-4 rounded-full border-solid border-2 border-primary-300 text-primary-500" type="text" [(ngModel)]="cpf_customer" [ngModelOptions]="{standalone: true}" id="query_cpf_customer" name="query_cpf_customer" placeholder="Somente numeros">
+            <button class="ml-4 p-4 font-bold text-primary-200 bg-primary-300" (click)="searchCustomer()" style="border-top-right-radius: 9999px; border-bottom-right-radius: 9999px;">CONSULTAR</button>
+        </form>
+
+        <table class="table-auto w-full">
+            <thead class="">
+                <tr class="text-lg grid grid-cols-3 place-content-center">
+                    <!-- <th class="py-4">Código</th> -->
+                    <th class="flex place-items-start p-4">Nome</th>
+                    <th class="flex place-items-start p-4">CPF</th>
+                    <th class="flex place-items-start p-4">Email</th>
+
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr class="uppercase grid grid-cols-4 odd:bg-slate-100 even:bg-slate-50 text-primary-400" *ngFor="let customer of Customers" id="lista_clientes">
+                    <!-- <td class="py-4 px-8">{{customer.cd_customer}}</td> -->
+                    <td class="flex place-items-center p-4">{{customer.nm_customer}}</td>
+                    <td class="flex place-items-center p-4">{{customer.dt_visit_customer}}</td>
+                    <td class="flex place-items-center p-4">{{customer.ds_email_customer}}</td>
+    
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </main>
