@@ -28,6 +28,9 @@ export class CrudEmployeeComponent {
   date_customer: Date= new Date('0000-00-00');
   email_customer: string ='';
 
+  isReadonly = true;
+  showButtons = true;
+
   cleanCamp()
   {
     this.id_customer = '';
@@ -51,7 +54,7 @@ export class CrudEmployeeComponent {
     this.http.post("http://127.0.0.1:8000/api/customers/",bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Customer Registered Successfully");
+        alert("Cliente registrado com sucesso");
         this.getAllCustomer();
         this.cleanCamp();
     });
@@ -69,7 +72,7 @@ export class CrudEmployeeComponent {
   }
 
   regVisit(data: any){
-    let currentDate = new Date(); // providing standardized format
+    let currentDate = new Date();
 
     let bodyData = {
       "dt_visit_customer": `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`,
@@ -79,12 +82,29 @@ export class CrudEmployeeComponent {
     this.http.post("http://127.0.0.1:8000/api/visits/",bodyData).subscribe((resultData: any)=>
       {
           console.log(resultData);
-          // this.getAllCustomer();
       });
   }
 
-  onSearch(event: any): void { 
-    this.searchTerms.next(event.target.value); 
+  deleteCustomer(data: any)
+  {
+    this.http.delete("http://127.0.0.1:8000/api/customer/"+data.cd_customer).subscribe((resultData: any) =>
+    {
+      alert("Cliente excluído com sucesso");
+      this.getAllCustomer();
+    })
+  }
+
+  updateCustomer()
+  {
+
+    this.http.put("http://127.0.0.1:8000/api/customer/"+this.selectedCustomer.cd_customer, this.selectedCustomer).subscribe((resultData: any) =>
+    {
+      console.log(resultData);
+      alert("Cliente atualizado com sucesso");
+      this.isReadonly = true;
+      this.showButtons = true;
+      this.getAllCustomer();
+    })
   }
 
   ngOnInit(): void {
@@ -100,6 +120,10 @@ export class CrudEmployeeComponent {
     });
   }
 
+  onSearch(event: any): void { 
+    this.searchTerms.next(event.target.value); 
+  }
+
   searchCustomers(term: string) { 
     if (term.trim() === '') { 
       return this.http.get<any[]>("http://127.0.0.1:8000/api/customers/"); 
@@ -109,7 +133,15 @@ export class CrudEmployeeComponent {
   }
 
   selectCustomer(customer: any){
+
     this.selectedCustomer = customer;
+    
+  }
+
+  alterSection()
+  {
+    this.isReadonly = !this.isReadonly;
+    this.showButtons = !this.showButtons;
   }
 
 }

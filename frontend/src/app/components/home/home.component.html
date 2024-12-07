@@ -1,13 +1,30 @@
-<main class="h-screen">
-    <section class="grid gap-8 place-items-center place-content-center h-screen">
+<main class="">
+    <section class="grid gap-8 place-items-center place-content-center h-screen" id="inicio">
+
+        <img class="left-0 bottom-0 absolute h-52" src="https://i.imgur.com/RtoDQYt.png" alt="" style="transform: scaleX(-1);">
+
         <div class="grid gap-4 place-content-center text-center tracking-wider">
             <h1 class="text-3xl font-bold text-primary-500">BEM-VINDO AO SITE DA CLÍNICA</h1>
             <h2 class="text-lg text-primary-500">Por aqui você consegue consultar o seu histórico de visitas na clínica</h2>
 
         </div>
         <div class="grid place-content-center">
-            <button class="p-4 w-96 font-bold rounded-full bg-primary-100 text-primary-400" (click)="routeCustomer()">PESQUISAR</button>
+            <button class="p-4 w-96 font-bold rounded-full bg-primary-100 text-primary-400" id="pesquisar" (click)="routeCustomer()">PESQUISAR</button>
             <!-- <button class="p-2 rounded-full bg-primary-100 text-primary-400" (click)="routeEmployee()">ACESSAR</button> -->
+        </div>
+    </section>
+
+    <section class="grid gap-8 place-items-center place-content-center h-screen" id="sobre">
+        <div class="h-screen grid grid-cols-2">
+            <div class="flex place-items-center place-content-center">
+                <div class="w-4/5">
+                    <h1 class="my-8 text-3xl font-bold text-primary-500">QUEM SOMOS</h1>
+                    <p class="my-4 text-lg text-primary-500">Somos uma clínica que atende a sua saúde. Por aqui, você pode consultar suas visitas conosco. Com um atendimento personalizado e profissional, nossa prioridade é o seu bem-estar e sua saúde em cada consulta!</p>
+                </div>
+            </div>
+
+            <img class="h-full absolute right-0" src="https://i.imgur.com/NDP8S3z.png" alt="Tree on the right side">
+            
         </div>
     </section>
 </main>
