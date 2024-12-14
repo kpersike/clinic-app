@@ -149,9 +149,11 @@ Para rodar os testes do Django:
 No bash:
     comando: python manage.py test
 
-8. CONSIDERAÇÕES FINAIS:
+8. CONSIDERAÇÕES FINAIS.
 
 Este projeto combina tecnologias modernas para fornecer uma aplicação eficiente e escalável. É essencial garantir que as dependências estejam sempre atualizadas e que a documentação evolua conforme o projeto cresce.
+
+
 
 
 
