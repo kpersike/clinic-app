@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_clinic',
-        'USER': 'postgres',
+        'NAME': 'polls',
+        'USER': 'docker',
         'HOST': 'localhost',
         'PORT': '5432',
-        'PASSWORD': 'admin'
+        'PASSWORD': 'docker'
     }
 }
 
