@@ -7,6 +7,9 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields = ('cd_customer', 'nm_customer', 'nr_cpf_customer', 'dt_customer', 'ds_email_customer')
 
 class VisitSerializer(serializers.ModelSerializer):
+
+    customer = CustomerSerializer(source='id_customer', read_only=True)
+
     class Meta:
         model = Visit
-        fields = ('cd_visit', 'id_customer', 'dt_visit_customer')
+        fields = ('cd_visit', 'id_customer', 'dt_visit_customer', 'customer')

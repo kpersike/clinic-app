@@ -88,11 +88,9 @@
     
             <tbody>
                 <tr class="uppercase grid grid-cols-4 odd:bg-slate-100 even:bg-slate-50 text-primary-400" *ngFor="let customer of Customers" id="lista_clientes">
-                    <!-- <td class="py-4 px-8">{{customer.cd_customer}}</td> -->
-                    <!-- <td class="flex place-items-center p-4">{{customer.nm_customer}}</td> -->
-                    <!-- <td class="flex place-items-center p-4">{{customer.ds_email_customer}}</td> -->
+                    <td class="flex place-items-center p-4">{{customer.customer.nm_customer}}</td>
+                    <td class="flex place-items-center p-4">{{customer.customer.nr_cpf_customer}}</td>
                     <td class="flex place-items-center p-4">{{customer.dt_visit_customer}}</td>
-    
                 </tr>
             </tbody>
         </table>

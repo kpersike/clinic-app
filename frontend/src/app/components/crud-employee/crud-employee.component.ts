@@ -75,7 +75,7 @@ export class CrudEmployeeComponent {
     let currentDate = new Date();
 
     let bodyData = {
-      "dt_visit_customer": `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`,
+      "dt_visit_customer": `${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`,
       "id_customer" : data.cd_customer
     };
 
